@@ -3,3 +3,5 @@ venv/
 .cache
 .vscode
 .pyc
+.py
+.cs
