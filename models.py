@@ -1,24 +1,31 @@
 all_questions = []
 all_answers = []
-
+all_users=[]
 
 class User(object):
-    def __init__(self, user_name, password):
-        self.user_name = user_name
+    def __init__(self, email, password):
+        self.email = email
         self.password = password
-        self.users = {}
+        all_users.append(self)
 
     def login(self):
         pass
 
-    def post_questions(self):
-        pass
+    def post_question(self, quiz_id, title, description, date_created, date_modified):
+        question = Question(quiz_id,title, description, date_created, date_modified)
+        all_questions.append(question)
+        # print("I am here")
+        # print(all_questions)
 
-    def ans_questions(self):
-        pass
+    def ans_question(self, ans_id, title, description, date_created, date_modified):
+        answer = Answer(ans_id, title, description, date_created, date_modified)
+        all_answers.append(answer)
+
+    def view_questions(self):
+        print(all_questions)
 
     def view_answers(self):
-        pass
+        print(all_answers)
 
     def accept_answers(self):
         pass
@@ -28,11 +35,13 @@ class User(object):
 
 
 class Question(object):
-    def __init__(self, quiz_id, description, date_created, date_modified):
+    def __init__(self, quiz_id, title, description, date_created, date_modified):
         self.quiz_id = quiz_id
         self.description = description
         self.date_created = date_created
         self.date_modified = date_modified
+    
+
 
 
 class Answer(object):
@@ -49,9 +58,11 @@ class Admin(User):
         super(Admin, self).__init__(username, password)
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     user = User("Allan Mogusu", "Allan")
-    admin = Admin("Allan Nyagwachi", "Mogusu")
+    # admin = Admin("Allan Nyagwachi", "Mogusu")
+    user.post_question('1','Python', 'How to install python3','12.3.2018','27.4.2018')
+    user.view_questions()
 
 
 
