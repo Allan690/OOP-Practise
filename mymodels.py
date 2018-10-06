@@ -72,7 +72,7 @@ class Admin(User):
         return username
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     user = User("Allan Mogusu", "Allan", "1")
     admin = Admin("Allan Nyagwachi", "Mogusu")
 
